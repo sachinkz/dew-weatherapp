@@ -62,15 +62,14 @@
 
             <!-- -------------------------------------->
 
-            <h3 class="forecast-heading">5 Days Forecast</h3>
+            <h3 class="forecast-heading heading-3">5 Days Forecast</h3>
 
             <!----------------------------------------->
 
             <div class="forecast-container flex-col">
                 <div class="eachdate flex-between">
                     <div class="flex-col date-of-forecast">
-                        <p class="common-heading">2 Mar</p>
-                        <p class="common-heading">Thursday</p>
+                        <p class="common-heading forecast-dat" >2 Mar</p>
                     </div>
                     <div class="graph">
                         <div class="graph1 graph-level"></div>
@@ -81,8 +80,7 @@
                 </div>
                 <div class="eachdate flex-between">
                     <div class="flex-col date-of-forecast">
-                        <p class="common-heading">3 Mar</p>
-                        <p class="common-heading">Friday</p>
+                        <p class="common-heading forecast-dat" >3 Mar</p>
                     </div>
                     <div class="graph">
                         <div class="graph2 graph-level"></div>
@@ -93,20 +91,18 @@
                 </div>
                 <div class="eachdate flex-between">
                     <div class="flex-col date-of-forecast">
-                        <p class="common-heading">4 Mar</p>
-                        <p class="common-heading">Saturday</p>
+                        <p class="common-heading forecast-dat" >4 Mar</p>
                     </div>
                     <div class="graph">
                         <div class="graph3 graph-level"></div>
                     </div>
                     <div class="flex">
-                        <h2 class="level-of-it fore-temp">54°c</h2>
+                        <h2 class="level-of-it  fore-temp">52°c</h2>
                     </div>
                 </div>
                 <div class="eachdate flex-between">
                     <div class="flex-col date-of-forecast">
-                        <p class="common-heading">5 Mar</p>
-                        <p class="common-heading">Sunday</p>
+                        <p class="common-heading forecast-dat" >5 Mar</p>
                     </div>
                     <div class="graph">
                         <div class="graph4 graph-level"></div>
@@ -117,8 +113,7 @@
                 </div>
                 <div class="eachdate flex-between">
                     <div class="flex-col date-of-forecast">
-                        <p class="common-heading">6 Mar</p>
-                        <p class="common-heading">Monday</p>
+                        <p class="common-heading forecast-dat" >6 Mar</p>
                     </div>
                     <div class="graph">
                         <div class="graph5 graph-level"></div>
@@ -135,7 +130,7 @@
 
         <div class="right-container">
             <div class="todays-highlights">
-                <h3>Todays highlights</h3>
+                <h3 class="heading-3">Todays highlights</h3>
                 <div id="allDetails" class="all-details">
                     <div class="left-details-box flex-col">
                         <div class="air-quality-all innercard flex-col">
@@ -152,10 +147,6 @@
                                 <div>
                                     <p class="common-heading">NO2</p>
                                     <h2 id="no2" class="level-of-it">33.60</h2>
-                                </div>
-                                <div>
-                                    <p class="common-heading">CO</p>
-                                    <h2 id="co" class="level-of-it">33.60</h2>
                                 </div>
                                 <div>
                                     <p class="common-heading">O3</p>
@@ -230,85 +221,86 @@
                 <div class="temperature flex-between">
                     <div class="today-times">
                         <h5>6 AM</h5>
-                        <img src="./assets/images/weather_icons/02d.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>9 AM</h5>
-                        <img src="./assets/images/weather_icons/01d.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>12 PM</h5>
-                        <img src="./assets/images/weather_icons/01d.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>3 PM</h5>
-                        <img src="./assets/images/weather_icons/01d.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>6 AM</h5>
-                        <img src="./assets/images/weather_icons/02n.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>9 PM</h5>
-                        <img src="./assets/images/weather_icons/01n.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>12 PM</h5>
-                        <img src="./assets/images/weather_icons/01n.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                     <div class="today-times">
                         <h5>3 AM</h5>
-                        <img src="./assets/images/weather_icons/01n.png" alt="">
-                        <h5>5°c</h5>
+                        <img alt="">
+                        <h5 id="today-times-temp">5°c</h5>
                     </div>
                 </div>
+                <p class="forecast-heading">Wind speed</p>
                 <div class="wind-speed flex-between">
                     <div class="today-windspeed">
                         <h5>6 AM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>9 AM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>12 PM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>3 PM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>6 PM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>9 PM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>12 AM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                     <div class="today-windspeed">
                         <h5>3 AM</h5>
                         <img src="./assets/images/weather_icons/direction.png" alt="">
-                        <h5>5°c</h5>
+                        <h5 id="today-wind-speed">5°c</h5>
                     </div>
                 </div>
             </div>

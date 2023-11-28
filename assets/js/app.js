@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', initialLocation)
 
 function initialLocation(){
-  fetchLocation(11.8764, 75.3738);
+  fetchLocation(9.9313,76.2674);
 }
 
+
+
+// ------------------------Function to Access Browsers current Location-------------------------------------
 
 function accessLocation() {
 
@@ -23,6 +26,10 @@ function accessLocation() {
   }
 
 }
+
+
+// ------------------------Function to Fetch datas from different APIs-------------------------------------
+
 
 
 async function fetchLocation(lat, lon,search) {
@@ -50,10 +57,11 @@ const feelsLike = document.getElementById('feels-like')
 const so2 = document.getElementById('so2')
 const no2 = document.getElementById('no2')
 const o3 = document.getElementById('o3')
-const co = document.getElementById('co')
 const graph=document.getElementsByClassName('graph-level')
 const foreTemp=document.getElementsByClassName('fore-temp')
-
+const forecastDates=document.getElementsByClassName('forecast-dat')
+const todayTimes=document.getElementsByClassName('today-times')
+const windSpeed=document.getElementsByClassName('today-windspeed')
 
 
 function displayDatas(cur, fore, air) {
@@ -62,7 +70,7 @@ function displayDatas(cur, fore, air) {
   <div  class="current-temperature flex-col flex-around">
       <div class="heading-last-updated">
           <h3>Now </h3>
-          <p id="last-updated">updated 5s before</p>
+          <p id="last-updated">update now</p>
           <a onclick="fetchLocation(${cur.coord.lat, cur.coord.lon})" href=""><i onclick"initialLocation()" class='bx bx-rotate-right flex'></i></a>
       </div>
       <h1>${kelvinToCelsius(cur.main.temp)}°c</h1>
@@ -85,12 +93,12 @@ function displayDatas(cur, fore, air) {
   so2.innerText=`${air.list[0].components.so2}`
   no2.innerText=`${air.list[0].components.no2}`
   o3.innerText=`${air.list[0].components.o3}`
-  co.innerText=`${air.list[0].components.co}`
 
 
   for(let i=0;i<graph.length;i++){
     let t=kelvinToCelsius(fore.list[i].main.temp)
     graph[i].style.width=`${getPercent(t,kelvinToCelsius(cur.main.temp))}%`
+
     if(t>=40){
       graph[i].style.backgroundColor='red'
     }else if(t>=30&&t<40){
@@ -104,11 +112,18 @@ function displayDatas(cur, fore, air) {
     }else if(t<0){
       graph[i].style.backgroundColor='blue'
     }
-    foreTemp[i].innerText=`${kelvinToCelsius(fore.list[i].main.temp)}°c`
-    
+    foreTemp[i].innerText=`${kelvinToCelsius(fore.list[i*9].main.temp)}°c`
+    forecastDates[i].innerText=`${getDate(fore.list[i*9].dt)}`
   }
-  
+  for(let i=0;i<todayTimes.length;i++){
+    todayTimes[i].querySelector("h5").innerText=formatTime(fore.list[i].dt);
+    todayTimes[i].querySelector("img").src=`./assets/images/weather_icons/${fore.list[i].weather[0].icon}.png`
+    todayTimes[i].querySelector("#today-times-temp").innerText=`${kelvinToCelsius(fore.list[i].main.temp)}°c`;
+    windSpeed[i].querySelector("h5").innerText=formatTime(fore.list[i].dt);
+    windSpeed[i].querySelector("#today-wind-speed").innerText=`${innerText=fore.list[i].wind.speed} kmph`;
+  }
 
+ 
 
 }
 

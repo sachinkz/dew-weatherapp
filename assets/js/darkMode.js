@@ -1,42 +1,47 @@
 
 
-function changeColor() {
 
+// ------------------------Function to switch theme of app from light to dark-------------------------------------
+
+
+function changeColor() {
 
     let toggle = document.getElementById("toggle")
     let toggleBtn = document.getElementById("toggleBtn")
-    let commonHeadings=document.getElementsByClassName("common-heading");
-
-
-    
+ 
     if (toggle.classList.contains('dark-mode-btn')) {
         toggle.classList.remove('dark-mode-btn')
-        toggleBtn.classList.remove('dark-mode-circle')
-        for(i=0;i<commonHeadings.length;i++){
-            commonHeadings[i].classList.remove("common-heading-dark")
-        }
-        
-        
+        toggleBtn.classList.remove('dark-mode-circle') 
     } else {
         toggle.classList.add('dark-mode-btn')
         toggleBtn.classList.add('dark-mode-circle')
-        for(i=0;i<commonHeadings.length;i++){
-            commonHeadings[i].classList.add("common-heading-dark");
-        }
     }
 
-    var root = document.documentElement;
-    let r=root.style
-    let background100 = root.style.getPropertyValue("--background-100")
-    let backgroundCard = root.style.getPropertyValue("--background-card")
-    let backgroundInnerCard = root.style.getPropertyValue("--background-innerCard")
-    let heading100 = root.style.getPropertyValue("--heading-100")
+    var r = document.documentElement;
+    var rStyle = window.getComputedStyle(r);
+
+    let background100 = rStyle.getPropertyValue("--background-100")
+    let background200 = rStyle.getPropertyValue("--background-200")
+    let background300 = rStyle.getPropertyValue("--background-300")
+    let heading100 = rStyle.getPropertyValue("--heading-100")
+    let heading200 = rStyle.getPropertyValue("--heading-200")
+    let heading300 = rStyle.getPropertyValue("--heading-300")
+    
+    let bg100="rgb(11, 11, 11)"; 
+    let bg200="rgb(23, 23, 23)";
+    let bg300="rgb(17, 17, 17)";
+    let hd100="rgb(222, 222, 222)"
+    let hd200="rgb(110, 110, 110)"
+    let hd300="rgb(192, 192, 192)"
 
 
-    background100 === 'whitesmoke' ? root.style.setProperty("--background-100", "rgb(12, 12, 12)") : root.style.setProperty("--background-100", "whitesmoke");
-    backgroundCard === 'white' ? root.style.setProperty("--background-card", "rgb(26, 26, 26)") : root.style.setProperty("--background-card", "white");
-    heading100==="rgb(12, 12, 12)"  ? r.setProperty("--heading-100","rgb(235, 232, 232)") : r.setProperty("--heading-100","rgb(12, 12, 12)") 
-    backgroundInnerCard==="whitesmoke" ? r.setProperty("--background-innercard","gray") : r.setProperty("--background-innercard","whitesmoke")
+    background100 ===heading100 ? r.style.setProperty("--background-100", bg100) : r.style.setProperty("--background-100",heading100 );
+    background200 ===heading200 ? r.style.setProperty("--background-200", bg200) : r.style.setProperty("--background-200",heading200 );
+    background300 ===heading300 ? r.style.setProperty("--background-300", bg300) : r.style.setProperty("--background-300",heading300 );
+    heading100 ===background100 ? r.style.setProperty("--heading-100", hd100) : r.style.setProperty("--heading-100",background100 );
+    heading200 ===background200 ? r.style.setProperty("--heading-200", hd200) : r.style.setProperty("--heading-200",background200 );
+    heading300 ===background300 ? r.style.setProperty("--heading-300", hd300) : r.style.setProperty("--heading-300",background300 );
+
 }
 
 
