@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', initialLocation)
 
 function initialLocation(){
-  fetchLocation(9.9313,76.2674);
+  fetchLocation(11.8764,75.3738);
 }
 
 
@@ -96,7 +96,7 @@ function displayDatas(cur, fore, air) {
 
 
   for(let i=0;i<graph.length;i++){
-    let t=kelvinToCelsius(fore.list[i].main.temp)
+    let t=kelvinToCelsius(fore.list[(i*8)+1].main.temp)
     graph[i].style.width=`${getPercent(t,kelvinToCelsius(cur.main.temp))}%`
 
     if(t>=40){
@@ -112,8 +112,8 @@ function displayDatas(cur, fore, air) {
     }else if(t<0){
       graph[i].style.backgroundColor='blue'
     }
-    foreTemp[i].innerText=`${kelvinToCelsius(fore.list[i*9].main.temp)}°c`
-    forecastDates[i].innerText=`${getDate(fore.list[i*9].dt)}`
+    foreTemp[i].innerText=`${kelvinToCelsius(fore.list[(i*8)+1].main.temp)}°c`
+    forecastDates[i].innerText=`${getDate(fore.list[(i*9)+1].dt)}`
   }
   for(let i=0;i<todayTimes.length;i++){
     todayTimes[i].querySelector("h5").innerText=formatTime(fore.list[i].dt);
