@@ -63,82 +63,21 @@ body {
 }
 
 .common-heading {
-    color: var(--heading-300);
+    color: var(--heading-200);
 }
 .common-heading-dark {
     color: rgb(50, 49, 49);
 }
 
 .level-of-it {
-    color: var(--levels);
+    color: var(--heading-100);
 }
-.level-of-it-dark {
-    color: rgb(17, 17, 17);
-}
+
 
 i {
     color: var(--heading-100);
     transition: var(--transition-heading);
 }
-
-/*------------------------ Loading Spinner----------------------- */
-.loadingspinner{
-    position: absolute;
-    z-index: 100;
-    width: 100%;
-    height: 100vh;
-    background-color: #292929dc;
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.lds-ripple {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-  }
-  .lds-ripple div {
-    position: absolute;
-    border: 4px solid #fff;
-    opacity: 1;
-    border-radius: 50%;
-    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-  }
-  .lds-ripple div:nth-child(2) {
-    animation-delay: -0.5s;
-  }
-  @keyframes lds-ripple {
-    0% {
-      top: 36px;
-      left: 36px;
-      width: 0;
-      height: 0;
-      opacity: 0;
-    }
-    4.9% {
-      top: 36px;
-      left: 36px;
-      width: 0;
-      height: 0;
-      opacity: 0;
-    }
-    5% {
-      top: 36px;
-      left: 36px;
-      width: 0;
-      height: 0;
-      opacity: 1;
-    }
-    100% {
-      top: 0px;
-      left: 0px;
-      width: 72px;
-      height: 72px;
-      opacity: 0;
-    }
-  }
 
 /*------------------------ Header styles----------------------- */
 
@@ -310,7 +249,7 @@ i {
     justify-content: center;
     align-items: flex-start;
     width: 400px;
-    z-index: 20;
+    z-index: 200;
     border-radius: 10px;
     
 }
@@ -321,7 +260,7 @@ i {
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    z-index: 20;
+    z-index: 200;
     border-radius: 10px;    
 }
 .search-lists{
@@ -837,3 +776,64 @@ footer {
         gap: 10px;
     }
 }
+
+
+/*------------------------ Loading Spinner----------------------- */
+.loadingspinner{
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    background-color: #292929dc;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    4.9% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    5% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
+    }
+  }

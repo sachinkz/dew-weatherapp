@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', fetchLocation(11.8764, 75.3738))
+document.addEventListener('DOMContentLoaded', initialLocation)
+
+function initialLocation(){
+  fetchLocation(11.8764, 75.3738);
+}
 
 
 function accessLocation() {
@@ -21,11 +25,15 @@ function accessLocation() {
 }
 
 
-async function fetchLocation(lat, lon) {
+async function fetchLocation(lat, lon,search) {
   let curWeather = await fetchData(url.currentWeather(lat, lon))
   let fCast = await fetchData(url.forecast(lat, lon))
   let airPol = await fetchData(url.airPollution(lat, lon))
   displayDatas(curWeather, fCast, airPol);
+  if(search){
+    closeSearchBox();
+    document.getElementById('search-results').style.display='none'
+  }
 }
 
 
@@ -55,7 +63,7 @@ function displayDatas(cur, fore, air) {
       <div class="heading-last-updated">
           <h3>Now </h3>
           <p id="last-updated">updated 5s before</p>
-          <a onclick="fetchLocation(${cur.coord.lat, cur.coord.lon})" href=""><i class='bx bx-rotate-right flex'></i></a>
+          <a onclick="fetchLocation(${cur.coord.lat, cur.coord.lon})" href=""><i onclick"initialLocation()" class='bx bx-rotate-right flex'></i></a>
       </div>
       <h1>${kelvinToCelsius(cur.main.temp)}°c</h1>
       <h5>${cur.weather[0].description}</h5>
@@ -82,7 +90,7 @@ function displayDatas(cur, fore, air) {
 
   for(let i=0;i<graph.length;i++){
     let t=kelvinToCelsius(fore.list[i].main.temp)
-    graph[i].style.width=`${getPercent(t,cur.main.temp)}%`
+    graph[i].style.width=`${getPercent(t,kelvinToCelsius(cur.main.temp))}%`
     if(t>=40){
       graph[i].style.backgroundColor='red'
     }else if(t>=30&&t<40){

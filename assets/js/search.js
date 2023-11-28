@@ -36,6 +36,7 @@ let interval;
 
 function fetchPlaces(e) {
 
+  document.getElementById("search-results").style.display="flex"
   const list = document.getElementById('result-list')
   const list2 = document.getElementById('result-list2')
   let place = e.target.value
@@ -52,8 +53,8 @@ function fetchPlaces(e) {
     response && response.length !== 0 && response.map((res) => {
       let li = document.createElement('li');
       let li2 = document.createElement('li');
-      li.innerHTML = `<li onclick="fetchLocation(${res.lat},${res.lon})" class="search-each-list"><i class='bx bx-map' ></i><h3>${res.name}, ${res.state? res.state+",": " "} ${res.country}</h3></li>`
-      li2.innerHTML = `<li onclick="fetchLocation(${res.lat},${res.lon})" class="search-each-list2"><i class='bx bx-map' ></i><h3>${res.name}, ${res.state? res.state+",": " "} ${res.country}</h3></li>`
+      li.innerHTML = `<li onclick="fetchLocation(${res.lat},${res.lon},true)" class="search-each-list"><i class='bx bx-map' ></i><h3>${res.name}, ${res.state? res.state+",": " "} ${res.country}</h3></li>`
+      li2.innerHTML = `<li onclick="fetchLocation(${res.lat},${res.lon},true)" class="search-each-list2"><i class='bx bx-map' ></i><h3>${res.name}, ${res.state? res.state+",": " "} ${res.country}</h3></li>`
       list.appendChild(li);
       list2.appendChild(li2);
     })

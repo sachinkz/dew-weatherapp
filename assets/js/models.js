@@ -60,6 +60,7 @@ const hideSpinner=()=>{
 }
 
 const getPercent=(num,temp)=>{
-    let val= num/((temp+20)-(temp-20))*100;
+    let val= num/(temp+10)*100;
+    console.log(val)
     return val
 }
