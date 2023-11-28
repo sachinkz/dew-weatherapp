@@ -1,0 +1,839 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,500;0,700;1,400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+:root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    --background-100: rgb(12, 12, 12);
+    --background-50: black;
+    --background-200: rgb(24, 24, 24);
+    --background-card: rgb(26, 26, 26);
+    --background-innercard: rgb(18, 17, 17);
+    --heading-100: rgb(235, 232, 232);
+    --heading-200: rgb(194, 193, 193);
+    --heading-300: rgb(154, 151, 151);
+    --levels: rgb(198, 196, 196);
+    --transition: background-color 1s ease-in-out;
+    --transition-heading:color 1s ease-in-out;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-100);
+    transition: var(--transition);
+    color: var(--heading-100);
+}
+
+/*---------------------------- Utility Classes --------------------------------- */
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.common-heading {
+    color: var(--heading-300);
+}
+.common-heading-dark {
+    color: rgb(50, 49, 49);
+}
+
+.level-of-it {
+    color: var(--levels);
+}
+.level-of-it-dark {
+    color: rgb(17, 17, 17);
+}
+
+i {
+    color: var(--heading-100);
+    transition: var(--transition-heading);
+}
+
+/*------------------------ Loading Spinner----------------------- */
+.loadingspinner{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    background-color: #292929dc;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  @keyframes lds-ripple {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    4.9% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    5% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
+    }
+  }
+
+/*------------------------ Header styles----------------------- */
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 10;
+    background-color: var(--background-100);
+    transition: var(--transition);
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 25px 0px 25px;
+
+}
+
+.logo {
+    gap: 10px;
+}
+
+.app-logo {
+    width: 35px;
+}
+
+.logo .app-title {
+    font-size: x-large;
+}
+.search-box{
+    position: relative;
+}
+
+.search-input{
+    width: 400px;
+    height: 35px;
+    border: 10px 10px;
+    border-radius: 15px;
+    background-color: var(--background-card);
+    transition: var(--transition);
+    border: none;
+    padding-left: 20px;
+    color: rgb(181, 179, 179);
+    font-weight: 600;
+    outline: none;
+}
+
+.hidden-search{
+    display: none;
+    font-size: x-large;
+    color: rgb(190, 189, 189);
+    cursor: pointer;
+}
+.current-location-btn {
+    background-color: rgba(154, 154, 247, 0.854);
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.current-location-btn:hover {
+    background-color: rgb(121, 139, 241);
+}
+
+.bx-current-location {
+    font-size: x-large;
+    color: black;
+}
+
+.toggle-btn {
+    width: 60px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px solid gray;
+    cursor: pointer;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    box-shadow: inset 0 0 8px 2px #292929;
+}
+
+.toggle-circle {
+    width: 26px;
+    height: 26px;
+    background-color: var(--background-card);
+    transition: var(--transition);
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: transform 0.5s ease-in-out;
+}
+.dark-mode-btn{
+    background-color: black;
+}
+.dark-mode-circle{
+    background-color: white;
+    transform: translateX(30px);
+}
+
+.bxs-sun {
+    color: black;
+    font-size: larger;
+}
+
+.bxs-moon {
+    color: white;
+    font-size: larger;
+}
+
+
+
+/* --------------------Search section styles------------------------------- */
+
+.search-full-screen{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    padding-top: 60px;
+    background-color: var(--background-100);
+}
+
+.search-box-fs {
+    position: relative;
+    height: 44px;
+    width: 90%;
+}
+.bxs-x-circle{
+    position: absolute;
+    top: 20px;
+    font-size: xx-large;
+    right: 20px;
+    cursor: pointer;
+    color: rgb(82, 82, 82);
+}
+
+
+.search-input-fs{
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+    background-color: var(--background-card);
+    transition: var(--transition);
+    border: none;
+    padding-left: 20px;
+    color: rgb(181, 179, 179);
+    font-weight: 600;
+}
+.search-input-fs:focus{
+    border: none;
+    outline: none;
+}
+
+
+.search-results-section{
+    position: fixed;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 400px;
+    z-index: 20;
+    border-radius: 10px;
+    
+}
+.search-results-section2{
+    position: fixed;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    z-index: 20;
+    border-radius: 10px;    
+}
+.search-lists{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.search-lists2{
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.search-lists>:nth-child(even){
+    background-color: var(--background-100);
+}
+.search-lists>:nth-child(odd){
+    background-color: var(--background-50);
+}
+.search-lists2>:nth-child(even){
+    background-color: var(--background-200);
+}
+.search-lists2>:nth-child(odd){
+    background-color: var(--background-50);
+}
+.search-each-list:hover{
+    background-color: var(--background-200);
+}
+.search-each-list2:hover{
+    background-color: var(--background-100);
+}
+.search-each-list{
+    width: 400px;
+    display: flex;
+    padding: 0px 20px;
+    gap: 20px;
+    height: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--heading-200);
+    cursor: pointer;
+    border-radius: 10px;
+}
+.search-each-list2{
+    width:800px ;
+    min-width: 350px;
+    display: flex;
+    padding: 0px 20px;
+    gap: 20px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    color: var(--heading-200);
+    cursor: pointer;
+    border-radius: 10px;
+}
+.search-each-list i{
+    color: var(--heading-300);
+    font-size: large;
+}
+
+/* --------------------Container main styles------------------------------- */
+
+.container {
+    margin: 80px 10px 20px 10px;
+}
+
+
+.left-container {
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    gap: 10px;
+    min-width: 300px;
+}
+
+.temp-container {
+    background-color: var(--background-card);
+    transition: var(--transition);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.temp-and-img {
+    align-items: center;
+}
+
+.current-temperature {
+    gap: 10px;
+}
+
+.current-temperature h1 {
+    font-size: 60px;
+    color: rgba(154, 154, 247, 0.854);
+}
+
+.current-temperature h3,
+h5 {
+    opacity: 0.7;
+}
+
+.heading-last-updated {
+    display: flex;
+    align-items: flex-end;
+    padding: 5px;
+}
+
+#last-updated {
+    font-size: 10px;
+    margin-left: 5px;
+    color: gray;
+    margin-bottom: 3px;
+}
+
+.bx-rotate-right {
+    margin-left: 5px;
+}
+
+hr {
+    opacity: 0.2;
+}
+
+.current-logo {
+    width: 60px;
+    height: 60px;
+}
+
+.bx-calendar-alt,
+.bx-location-plus {
+    font-size: large;
+}
+
+.date-and-loc {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 30px;
+}
+
+
+
+
+
+.forecast-container {
+    background-color: var(--background-card);
+    transition: var(--transition);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 300px;
+    justify-content: space-around;
+    gap: 23px;
+}
+
+.forecast-heading {
+    color: rgb(205, 202, 202);
+    margin-left: 20px;
+}
+
+.graph {
+    width: 60%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.date-of-forecast {
+    width: 80px;
+    justify-content: center;
+}
+
+.graph-level {
+    height: 25px;
+    background-color: rgb(143, 142, 142);
+    border-radius: 6px 2px 2px 6px;
+
+}
+
+.graph1 {
+    width: 40%;
+}
+
+.graph2 {
+    width: 60%;
+}
+
+.graph3 {
+    width: 50%;
+}
+
+.graph4 {
+    width: 30%;
+}
+
+.graph5 {
+    width: 70%;
+}
+
+/*---------------------------Right section styles----------------------------  */
+
+
+.right-container {
+    width: 72%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todays-highlights {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--background-card);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.todays-highlights h3 {
+    color: rgb(189, 188, 188);
+}
+
+.all-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.left-details-box {
+    gap: 20px;
+    width: 50%;
+}
+
+.air-quality-all {
+    background-color: var(--background-100);
+    transition: var(--transition);
+    border-radius: 10px;
+}
+
+.air-quality-heading {
+    padding: 10px;
+}
+
+.air-quality {
+    align-items: center;
+    padding: 30px 30px 30px 10px;
+}
+
+.air-quality-status {
+    background-color: lightgreen;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: black;
+}
+
+.bx-wind {
+    font-size: 50px;
+}
+
+.humidity-pressure {
+    gap: 20px;
+}
+
+.humidity {
+    width: 50%;
+    background-color: var(--background-100);
+    transition: var(--transition);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.humidity p {
+    margin-bottom: 20px;
+}
+
+.pressure {
+    background-color: var(--background-100);
+    transition: var(--transition);
+    border-radius: 10px;
+    width: 50%;
+    padding: 20px;
+}
+
+.pressure p {
+    margin-bottom: 20px;
+}
+
+.icons {
+    font-size: 50px;
+}
+
+
+.right-details-box {
+    gap: 20px;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.sunrise-and-set {
+    justify-content: space-between;
+    background-color: var(--background-100);
+    transition: var(--transition);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sunrise-and-set p {
+    padding-bottom: 10px;
+}
+
+.rise-and-set {
+    padding: 25px 0;
+}
+
+.rise {
+    width: 50%;
+    padding: 0 20px;
+}
+
+.set {
+    width: 50%;
+    padding: 0 20px;
+}
+
+
+
+
+
+
+
+
+.today-at-container {
+    gap: 10px;
+}
+
+.temperature {
+    gap: 10px;
+}
+
+.today-times {
+    background-color: var(--background-card);
+    transition: var(--transition);
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.today-times img {
+    width: 50px;
+}
+
+.wind-speed {
+    gap: 10px;
+}
+
+.today-windspeed {
+    background-color: var(--background-card);
+    transition: var(--transition);
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.today-windspeed img {
+    transform: rotate(135deg);
+    width: 50px;
+}
+
+
+
+
+
+/* -----------------------Footer styles--------------------------- */
+
+
+
+footer {
+    width: 100%;
+    height: 60px;
+    color: rgb(93, 93, 93);
+}
+
+
+
+/* -------------------------Media Queries------------------------ */
+
+@media(max-width:1250px) {
+    .left-container {
+        margin-right: 20px;
+    }
+
+    .all-details {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .left-details-box {
+        width: 80%;
+    }
+
+    .right-details-box {
+        width: 80%;
+    }
+    .temperature {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .wind-speed {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+    .today-at-container{
+        gap: 40px;
+    }
+}
+
+@media(max-width:950px) {
+    .left-details-box {
+        width: 100%;
+    }
+    .right-details-box {
+        width: 100%;
+    }
+    .search-input {
+        display: none;
+    }
+    .visible-search{
+        display: block;
+    }
+    .hidden-search{
+        display: block;
+    }
+    .search-results-section{
+        display: none;
+    }
+}
+
+@media(max-width:800px) {
+    .container{
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .left-container{
+        width: 80%;
+        margin-right: 0;
+    }
+    .right-container{
+        width: 80%;
+    }
+}
+
+@media(max-width:600px) {
+    .left-container{
+        width: 100%;
+        margin-right: 0;
+    }
+    .right-container{
+        width: 100%;
+    }
+    .current-loc-text{
+        display: none;
+    }
+}
+
+
+@media(max-width:500px) {
+    .humidity-pressure{
+        flex-direction: column;
+        align-items: center;
+    }
+    .humidity , .pressure{
+        width: 100%;
+    }
+    .set{
+        padding: 0;
+    }
+    .rise{
+        padding: 0;
+    }
+    .temperature {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .wind-speed {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}

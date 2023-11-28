@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="icon" href="./favicon.svg">
+    <title>WeatherCheck</title>
+</head>
+
+<body>
+    <header class="navbar flex">
+        <div class="logo flex">
+            <img class="app-logo" src="./assets/images/logo.png" alt="app-logo">
+            <h1 class="app-title">Dew</h1>
+        </div>
+        <div class="search-box">
+            <input id="search-input1" class="search-input" type="text" placeholder="Search City">
+            <section id="search-results" class="search-results-section">
+                <ul id="result-list" class="search-lists">
+                    
+                </ul>
+            </section>
+        </div>
+        
+        <div class="flex" style="gap: 20px;">
+            <i onclick="openSearchBox()" class='bx bx-search hidden-search'></i>
+            <div  onclick="changeColor()" id="toggle" class="toggle-btn flex-around"><i class='bx bxs-moon'></i><i class='bx bxs-sun'></i>
+                <div id="toggleBtn" class="toggle-circle"></div>
+            </div>
+            <button onclick="accessLocation()" class="current-location-btn flex"><i class='bx bx-current-location'></i><p class="current-loc-text">Current Location</p></button>
+        </div>
+    </header>
+    
+    <section id="loading-spinner" class="loadingspinner">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </section>
+    
+    <section id="search-box" class="search-full-screen">
+        <div class="search-box-fs">
+            <input id="search-input2" class="search-input-fs" type="text" placeholder="Search City">
+        </div>
+        <i onclick="closeSearchBox()" class='bx bxs-x-circle'></i>
+        <section id="search-results2" class="search-results-section2">
+            <ul id="result-list2" class="search-lists2">
+                
+            </ul>
+        </section>
+    </section>
+    
+    <div id="main-container" class="container flex-around">
+        
+        <!------------------Left container with Current temperature and weatther with forecast of 5 days -------------------------->
+        
+        <div class="left-container">
+
+            <div id="current-weather" class="temp-container ">
+                
+            </div>
+
+            <!-- -------------------------------------->
+
+            <h3 class="forecast-heading">5 Days Forecast</h3>
+
+            <!----------------------------------------->
+
+            <div class="forecast-container flex-col">
+                <div class="eachdate flex-between">
+                    <div class="flex-col date-of-forecast">
+                        <p class="common-heading">2 Mar</p>
+                        <p class="common-heading">Thursday</p>
+                    </div>
+                    <div class="graph">
+                        <div class="graph1 graph-level"></div>
+                    </div>
+                    <div class="flex">
+                        <h2 class="level-of-it fore-temp">51°c</h2>
+                    </div>
+                </div>
+                <div class="eachdate flex-between">
+                    <div class="flex-col date-of-forecast">
+                        <p class="common-heading">3 Mar</p>
+                        <p class="common-heading">Friday</p>
+                    </div>
+                    <div class="graph">
+                        <div class="graph2 graph-level"></div>
+                    </div>
+                    <div class="flex">
+                        <h2 class="level-of-it  fore-temp">52°c</h2>
+                    </div>
+                </div>
+                <div class="eachdate flex-between">
+                    <div class="flex-col date-of-forecast">
+                        <p class="common-heading">4 Mar</p>
+                        <p class="common-heading">Saturday</p>
+                    </div>
+                    <div class="graph">
+                        <div class="graph3 graph-level"></div>
+                    </div>
+                    <div class="flex">
+                        <h2 class="level-of-it fore-temp">54°c</h2>
+                    </div>
+                </div>
+                <div class="eachdate flex-between">
+                    <div class="flex-col date-of-forecast">
+                        <p class="common-heading">5 Mar</p>
+                        <p class="common-heading">Sunday</p>
+                    </div>
+                    <div class="graph">
+                        <div class="graph4 graph-level"></div>
+                    </div>
+                    <div class="flex">
+                        <h2 class="level-of-it fore-temp">51°c</h2>
+                    </div>
+                </div>
+                <div class="eachdate flex-between">
+                    <div class="flex-col date-of-forecast">
+                        <p class="common-heading">6 Mar</p>
+                        <p class="common-heading">Monday</p>
+                    </div>
+                    <div class="graph">
+                        <div class="graph5 graph-level"></div>
+                    </div>
+                    <div class="flex">
+                        <h2 class="level-of-it fore-temp">49°c</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!----------------------------- right container with todays highlights and each time's details-------------------->
+
+        <div class="right-container">
+            <div class="todays-highlights">
+                <h3>Todays highlights</h3>
+                <div id="allDetails" class="all-details">
+                    <div class="left-details-box flex-col">
+                        <div class="air-quality-all innercard flex-col">
+                            <div class="air-quality-heading flex-between">
+                                <p class="common-heading">Air Quality Index</p>
+                                <p class="air-quality-status">Good</p>
+                            </div>
+                            <div class="air-quality flex-around">
+                                <i class='bx bx-wind'></i>
+                                <div>
+                                    <p class="common-heading">SO2</p>
+                                    <h2 id="so2" class="level-of-it">7.75</h2>
+                                </div>
+                                <div>
+                                    <p class="common-heading">NO2</p>
+                                    <h2 id="no2" class="level-of-it">33.60</h2>
+                                </div>
+                                <div>
+                                    <p class="common-heading">CO</p>
+                                    <h2 id="co" class="level-of-it">33.60</h2>
+                                </div>
+                                <div>
+                                    <p class="common-heading">O3</p>
+                                    <h2 id="o3" class="level-of-it">38.60</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="humidity-pressure flex-between">
+                            <div class="humidity innercard flex-col">
+                                <p class="common-heading">Humidity</p>
+                                <div class="flex-around items-center">
+                                    <i class='bx bx-droplet icons'></i>
+                                    <h2 id="humidity" class="level-of-it"></h2>
+                                </div>
+                            </div>
+                            <div class="pressure innercard flex-col">
+                                <p class="common-heading">Pressure</p>
+                                <div class="flex-around items-center">
+                                    <i class='bx bx-tachometer icons'></i>
+                                    <h2 id="pressure" class="level-of-it"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        
+                        <div class="right-details-box flex-col">
+                        <div class="sunrise-and-set innercard">
+                            <p class="common-heading">Sunrise & Sunset</p>
+                            <div class="rise-and-set flex-between">
+                                <div class="rise flex-around items-center">
+                                    <i class='bx bx-sun icons'></i>
+                                    <div>
+                                        <p  class="common-heading">Sunrise</p>
+                                        <h2 id="sunrise" class="level-of-it"></h2>
+                                    </div>
+                                </div>
+                                <div class="set flex-around items-center">
+                                    <i class='bx bx-moon icons'></i>
+                                    <div>
+                                        <p  class="common-heading">Sunset</p>
+                                        <h2 id="sunset" class="level-of-it"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="humidity-pressure flex-between">
+                            <div class="humidity flex-col">
+                                <p  class="common-heading">Visibility</p>
+                                <div class="flex-around items-center">
+                                    <i class='bx bx-show-alt icons'></i>
+                                    <h2 id="visibility" class="level-of-it"></h2>
+                                </div>
+                            </div>
+                            <div class="pressure flex-col">
+                                <p class="common-heading">Feels Like</p>
+                                <div class="flex-around items-center">
+                                    <i class='bx bxs-thermometer icons'></i>
+                                    <h2 id="feels-like" class="level-of-it"></h2>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                </div>
+            </div>
+
+
+            <p class="forecast-heading">Today At</p>
+
+            <div class="today-at-container flex-col">
+                <div class="temperature flex-between">
+                    <div class="today-times">
+                        <h5>6 AM</h5>
+                        <img src="./assets/images/weather_icons/02d.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>9 AM</h5>
+                        <img src="./assets/images/weather_icons/01d.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>12 PM</h5>
+                        <img src="./assets/images/weather_icons/01d.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>3 PM</h5>
+                        <img src="./assets/images/weather_icons/01d.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>6 AM</h5>
+                        <img src="./assets/images/weather_icons/02n.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>9 PM</h5>
+                        <img src="./assets/images/weather_icons/01n.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>12 PM</h5>
+                        <img src="./assets/images/weather_icons/01n.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-times">
+                        <h5>3 AM</h5>
+                        <img src="./assets/images/weather_icons/01n.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                </div>
+                <div class="wind-speed flex-between">
+                    <div class="today-windspeed">
+                        <h5>6 AM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>9 AM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>12 PM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>3 PM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>6 PM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>9 PM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>12 AM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                    <div class="today-windspeed">
+                        <h5>3 AM</h5>
+                        <img src="./assets/images/weather_icons/direction.png" alt="">
+                        <h5>5°c</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <footer class="footer flex">
+        <p>all rights reserved @sachin-k 2023.</p>
+    </footer>
+
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/models.js"></script>
+    <script src="./assets/js/darkMode.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/search.js"></script>
+</body>
+
+</html>
